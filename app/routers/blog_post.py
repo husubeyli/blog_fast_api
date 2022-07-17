@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import APIRouter, Body, Query, Path
-from models.blog import BlogModel
+from db.models import BlogModel
 
 router = APIRouter(
     prefix="/blogs",

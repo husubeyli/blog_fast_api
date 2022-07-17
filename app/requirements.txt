@@ -12,3 +12,4 @@ uvicorn==0.17.6
 sqlalchemy==1.4.39
 passlib==1.7.4
 bcrypt==3.2.2
+fastapi-admin==1.0.4

@@ -26,3 +26,6 @@ archive.zip
 # vim temporary files
 *~
 .*.sw?
+
+# database
+blog_fast_api.db

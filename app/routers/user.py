@@ -16,21 +16,30 @@ router = APIRouter(
 
 # Create user
 @router.post("/", response_model=UserDisplay)
-def create_user(request: UserBase, db: Session = Depends(get_db)):
+async def create_user(request: UserBase, db: Session = Depends(get_db)):
     return db_user.create_user(db, request)
 
 
 # Read all user
-@router.get('/', response_model=List[UserDisplay])
-def get_all_user(db: Session = Depends(get_db)):
+@router.get('/all', response_model=List[UserDisplay])
+async def get_all_user(db: Session = Depends(get_db)):
     return db_user.get_all_users(db)
 
 
 # Read one user
 @router.get('/{user_id}', response_model=UserDisplay)
-def get_user(user_id: int, db: Session = Depends(get_db)):
-    return db_user.get_one_user(db, user_id)
+async def get_user(user_id: int, db: Session = Depends(get_db)):
+    return db_user.get_user(db, user_id)
+
 
 # Update user
+@router.put('/{user_id}', response_model=UserDisplay)
+async def update_user(user_id: int, request: UserBase, db: Session = Depends(get_db)):
+    return db_user.update_user(db, user_id, request)
 
 # Delete user
+
+
+@router.get('/delete/{user_id}')
+async def delete_user(user_id: int, db: Session = Depends(get_db)):
+    return db_user.delete_user(db, user_id)
